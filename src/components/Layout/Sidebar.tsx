@@ -4,6 +4,7 @@ import { useTranslation } from "@/context/LanguageContext";
 import { useApp } from "@/context/AppContext";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Users } from "lucide-react"; // Icon import qilish
 import {
   Home,
   ShoppingCart,
@@ -58,61 +59,68 @@ export function Sidebar({ className }: SidebarProps) {
 
       <div className="flex-1 overflow-y-auto py-4">
         <nav className="space-y-1 px-2">
-          <SidebarLink 
-            to="/" 
-            icon={<Home />} 
-            label={t("dashboard")} 
-            collapsed={collapsed} 
-            active={location.pathname === "/"} 
-          />
-          <SidebarLink 
-            to="/pos" 
-            icon={<ShoppingCart />} 
-            label={t("pos")} 
-            collapsed={collapsed} 
-            active={location.pathname === "/pos"} 
-          />
-          <SidebarLink 
-            to="/sales" 
-            icon={<FileText />} 
-            label={t("sales")} 
-            collapsed={collapsed} 
-            active={location.pathname === "/sales"} 
-          />
-          <SidebarLink 
-            to="/products" 
-            icon={<Package />} 
-            label={t("products")} 
-            collapsed={collapsed} 
-            active={location.pathname === "/products"} 
-          />
-          <SidebarLink 
-            to="/inventory" 
-            icon={<Package />} 
-            label={t("inventory")} 
-            collapsed={collapsed} 
-            active={location.pathname === "/inventory"} 
-          />
-          <SidebarLink 
-            to="/reports" 
-            icon={<BarChart3 />} 
-            label={t("reports")} 
-            collapsed={collapsed} 
-            active={location.pathname === "/reports"} 
-          />
-          <SidebarLink 
-            to="/installments" 
-            icon={<CreditCard />} 
-            label={t("installments")} 
+          <SidebarLink
+            to="/"
+            icon={<Home />}
+            label={t("dashboard")}
             collapsed={collapsed}
-            active={location.pathname.startsWith("/installments")} 
+            active={location.pathname === "/"}
           />
-          <SidebarLink 
-            to="/settings" 
-            icon={<Settings />} 
-            label={t("settings")} 
-            collapsed={collapsed} 
-            active={location.pathname === "/settings"} 
+          <SidebarLink
+            to="/pos"
+            icon={<ShoppingCart />}
+            label={t("pos")}
+            collapsed={collapsed}
+            active={location.pathname === "/pos"}
+          />
+          <SidebarLink
+            to="/sales"
+            icon={<FileText />}
+            label={t("sales")}
+            collapsed={collapsed}
+            active={location.pathname === "/sales"}
+          />
+          <SidebarLink
+            to="/products"
+            icon={<Package />}
+            label={t("products")}
+            collapsed={collapsed}
+            active={location.pathname === "/products"}
+          />
+          <SidebarLink
+            to="/inventory"
+            icon={<Package />}
+            label={t("inventory")}
+            collapsed={collapsed}
+            active={location.pathname === "/inventory"}
+          />
+          <SidebarLink
+            to="/reports"
+            icon={<BarChart3 />}
+            label={t("reports")}
+            collapsed={collapsed}
+            active={location.pathname === "/reports"}
+          />
+          <SidebarLink
+            to="/installments"
+            icon={<CreditCard />}
+            label={t("installments")}
+            collapsed={collapsed}
+            active={location.pathname.startsWith("/installments")}
+          />
+          <SidebarLink
+            to="/employees"
+            icon={<Users />} // Hodimlar uchun mos ikonka
+            label={t("employees")}
+            collapsed={collapsed}
+            active={location.pathname === "/employees"}
+          />
+          <SidebarLink
+            to="/settings"
+            icon={<Settings />}
+            label={t("settings")}
+            collapsed={collapsed}
+            active={location.pathname === "/settings"}
           />
         </nav>
       </div>

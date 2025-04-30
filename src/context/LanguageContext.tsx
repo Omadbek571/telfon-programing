@@ -263,6 +263,12 @@ const translations = {
     ru: "Корзина пуста",
     en: "Cart is empty"
   },
+  employees: {
+    uz_latin: "Hodimlar",
+    uz_cyrillic: "Ҳодимлар",
+    ru: "Сотрудники",
+    en: "Employees"
+  }, 
   checkout: {
     uz_latin: "Buyurtma berish",
     uz_cyrillic: "Буюртма бериш",

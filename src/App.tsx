@@ -7,6 +7,7 @@ import { AppProvider } from "@/context/AppContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { AppLayout } from "@/components/Layout/AppLayout";
 import { SuperAdminLayout } from "@/components/Layout/SuperAdminLayout";
+import Employees from "./pages/Employees";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Sales from "./pages/Sales";
@@ -48,6 +49,7 @@ const App = () => (
                 <Route path="reports" element={<Reports />} />
                 <Route path="installments" element={<InstallmentPayments />} />
                 <Route path="settings" element={<Settings />} />
+                <Route path="employees" element={<Employees />} />
               </Route>
               
               {/* SuperAdmin Routes */}
