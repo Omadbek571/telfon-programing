@@ -9,6 +9,7 @@ const employees = [
     salary: "3 500 000 UZS",
     salaryStatus: "Berilgan",
     phone: "+998 90 123 45 67",
+    address: "Tashkent, Mirzo Ulugbek"
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ const employees = [
     salary: "2 800 000 UZS",
     salaryStatus: "Berilmagan",
     phone: "+998 91 234 56 78",
+    address: "Samarkand, Jomboy"
   },
   {
     id: 3,
@@ -27,6 +29,7 @@ const employees = [
     salary: "3 000 000 UZS",
     salaryStatus: "Berilgan",
     phone: "+998 93 345 67 89",
+    address: "Bukhara, Kogon"
   },
 ];
 
@@ -44,6 +47,7 @@ function Employees() {
             <th className="p-2 border">Oyligi</th>
             <th className="p-2 border">Oylik statusi</th>
             <th className="p-2 border">Telefon raqami</th>
+            <th className="p-2 border">Manzil</th>
           </tr>
         </thead>
         <tbody>
@@ -74,6 +78,7 @@ function Employees() {
                 </span>
               </td>
               <td className="p-2 border">{employee.phone}</td>
+              <td className="p-2 border">{employee.address}</td>
             </tr>
           ))}
         </tbody>

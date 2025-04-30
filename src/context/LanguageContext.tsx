@@ -1,7 +1,13 @@
-
 import React, { createContext, useContext } from 'react';
+// Loyihangizdagi haqiqiy yo'llarni ishlating:
 import { Language } from '@/types';
 import { useApp } from '@/context/AppContext';
+
+/*
+// Agar importlarda muammo bo'lsa, test uchun vaqtinchalik:
+type Language = "uz_latin" | "uz_cyrillic" | "ru" | "en";
+const useApp = () => ({ language: "uz_latin" as Language });
+*/
 
 // Translations object
 const translations = {
@@ -79,6 +85,36 @@ const translations = {
     uz_cyrillic: "Маҳсулотлар",
     ru: "Товары",
     en: "Products"
+  },
+  type: { // Jadval ustuni: Turi
+    uz_latin: "Turi",
+    uz_cyrillic: "Тури",
+    ru: "Тип",
+    en: "Type"
+  },
+  priceSellUzs: { // Jadval ustuni: Narxi (Sotish/UZS)
+    uz_latin: "Narxi (Sotish/UZS)",
+    uz_cyrillic: "Нархи (Сотиш/СЎМ)",
+    ru: "Цена (Продажа/UZS)",
+    en: "Price (Sell/UZS)"
+  },
+   stockInfo: { // Jadval ustuni: Ombor/Info
+    uz_latin: "Ombor/Info",
+    uz_cyrillic: "Омбор/Инфо",
+    ru: "Склад/Инфо",
+    en: "Stock/Info"
+  },
+  android: { // Mahsulot turi: Android
+      uz_latin: "Android",
+      uz_cyrillic: "Android",
+      ru: "Android",
+      en: "Android"
+  },
+  iphone: { // Mahsulot turi: iPhone
+      uz_latin: "iPhone",
+      uz_cyrillic: "iPhone",
+      ru: "iPhone",
+      en: "iPhone"
   },
   inventory: {
     uz_latin: "Ombor",
@@ -220,7 +256,6 @@ const translations = {
     ru: "Поиск",
     en: "Search"
   },
-  // Added translations for missing keys
   uzs: {
     uz_latin: "so'm",
     uz_cyrillic: "сўм",
@@ -268,7 +303,7 @@ const translations = {
     uz_cyrillic: "Ҳодимлар",
     ru: "Сотрудники",
     en: "Employees"
-  }, 
+  },
   checkout: {
     uz_latin: "Buyurtma berish",
     uz_cyrillic: "Буюртма бериш",
@@ -450,39 +485,31 @@ const translations = {
     ru: "Отклонить",
     en: "Reject"
   },
-  // Add the missing actions key
   actions: {
     uz_latin: "Amallar",
     uz_cyrillic: "Амаллар",
     ru: "Действия",
     en: "Actions"
   },
-  // Add users key for translations
   users: {
     uz_latin: "Foydalanuvchilar",
     uz_cyrillic: "Фойдаланувчилар",
     ru: "Пользователи",
     en: "Users"
   },
-  // Add new translation keys
   list: {
     uz_latin: "Ro'yxat",
     uz_cyrillic: "Рўйхат",
     ru: "Список",
     en: "List"
   },
-  current_stock: {
+  current_stock: { // Bu kalit ombordagi joriy qoldiq uchun ishlatilishi mumkin
     uz_latin: "Joriy zaxira",
     uz_cyrillic: "Жорий захира",
     ru: "Текущий запас",
     en: "Current Stock"
   },
-  min_stock: {
-    uz_latin: "Minimal zaxira",
-    uz_cyrillic: "Минимал захира",
-    ru: "Минимальный запас",
-    en: "Min Stock"
-  },
+  // min_stock kalitining dublikati olib tashlandi
   remaining: {
     uz_latin: "Qolgan",
     uz_cyrillic: "Қолган",
@@ -543,19 +570,14 @@ const translations = {
     ru: "Название",
     en: "Name"
   },
-  stock: {
-    uz_latin: "Zaxira",
-    uz_cyrillic: "Захира",
-    ru: "Запас",
-    en: "Stock"
-  },
+  // stock kalitining dublikati olib tashlandi
   date: {
     uz_latin: "Sana",
     uz_cyrillic: "Сана",
     ru: "Дата",
     en: "Date"
   },
-  payment_method: {
+  payment_method: { // Bu kalit mavjud paymentMethod bilan bir xil, lekin _ bilan. Bittasini tanlang.
     uz_latin: "To'lov usuli",
     uz_cyrillic: "Тўлов усули",
     ru: "Способ оплаты",
@@ -579,14 +601,15 @@ const translations = {
     ru: "Подписка",
     en: "Subscription"
   },
-  // Product related translations
-  addProduct: {
+
+  // --- AddProductDialog uchun qo'shilgan va yangilangan tarjimalar ---
+  addProduct: { // Umumiy sarlavha (agar kerak bo'lsa)
     uz_latin: "Mahsulot qo'shish",
     uz_cyrillic: "Маҳсулот қўшиш",
     ru: "Добавить товар",
     en: "Add Product"
   },
-  addProductDescription: {
+  addProductDescription: { // Umumiy tavsif (agar kerak bo'lsa)
     uz_latin: "Yangi mahsulot qo'shish uchun ma'lumotlarni to'ldiring",
     uz_cyrillic: "Янги маҳсулот қўшиш учун маълумотларни тўлдиринг",
     ru: "Заполните информацию для добавления нового товара",
@@ -598,36 +621,141 @@ const translations = {
     ru: "Штрих-код",
     en: "Barcode"
   },
-  category: {
+  category: { // Bu Android uchun olib tashlangan bo'lsa-da, qoldirilgan
     uz_latin: "Kategoriya",
     uz_cyrillic: "Категория",
     ru: "Категория",
     en: "Category"
   },
-  priceUzs: {
+  priceUzs: { // Android uchun
     uz_latin: "Narxi (so'm)",
     uz_cyrillic: "Нархи (сўм)",
     ru: "Цена (сум)",
     en: "Price (UZS)"
   },
-  priceUsd: {
+  priceUsd: { // Android uchun
     uz_latin: "Narxi (dollar)",
     uz_cyrillic: "Нархи (доллар)",
     ru: "Цена (доллар)",
     en: "Price (USD)"
   },
-  minStock: {
-    uz_latin: "Minimal zaxira",
-    uz_cyrillic: "Минимал захира",
-    ru: "Минимальный запас",
-    en: "Min Stock"
+  addAndroid: { // Android qo'shish tugmasi va sarlavhasi
+    uz_latin: "Android qo'shish",
+    uz_cyrillic: "Android қўшиш",
+    ru: "Добавить Android",
+    en: "Add Android"
   },
-  productAdded: {
-    uz_latin: "Mahsulot qo'shildi",
-    uz_cyrillic: "Маҳсулот қўшилди",
-    ru: "Товар добавлен",
-    en: "Product added"
+  addAndroidDescription: { // Android uchun tavsif
+    uz_latin: "Yangi Android qurilma qo'shish uchun ma'lumotlarni to'ldiring",
+    uz_cyrillic: "Янги Android қурилма қўшиш учун маълумотларни тўлдиринг",
+    ru: "Заполните информацию для добавления нового Android устройства",
+    en: "Fill in the information to add a new Android device"
   },
+  androidAdded: { // Android qo'shilgandagi xabar
+    uz_latin: "Android qurilma muvaffaqiyatli qo'shildi",
+    uz_cyrillic: "Android қурилма муваффақиятли қўшилди",
+    ru: "Android устройство успешно добавлено",
+    en: "Android device added successfully"
+  },
+  addIPhone: { // iPhone qo'shish tugmasi va sarlavhasi
+    uz_latin: "iPhone qo'shish",
+    uz_cyrillic: "iPhone қўшиш",
+    ru: "Добавить iPhone",
+    en: "Add iPhone"
+  },
+  addIPhoneDescription: { // iPhone qo'shish tavsifi
+    uz_latin: "Yangi iPhone qo'shish uchun ma'lumotlarni to'ldiring",
+    uz_cyrillic: "Янги iPhone қўшиш учун маълумотларни тўлдиринг",
+    ru: "Заполните информацию для добавления нового iPhone",
+    en: "Fill in the information to add a new iPhone"
+  },
+  purchasePrice: { // iPhone olingan narxi
+    uz_latin: "Olingan narxi ",
+    uz_cyrillic: "Олинган нархи ",
+    ru: "Цена покупки ",
+    en: "Purchase Price "
+  },
+  sellingPriceHeader: { // Narx ustuni uchun umumiy nom
+    uz_latin: "Sotish Narxi",
+    uz_cyrillic: "Сотиш Нархи",
+    ru: "Цена продажи",
+    en: "Selling Price"
+  },
+  capacity: { // Hajmi ustuni va dialogdagi label uchun
+    uz_latin: "Hajmi", // Yoki Sig'imi
+    uz_cyrillic: "Ҳажми", // Yoki Сиғими
+    ru: "Емкость",
+    en: "Capacity"
+  },
+  region: { // Seriya/Region ustuni va dialogdagi label uchun
+    uz_latin: "Seriyasi/Region",
+    uz_cyrillic: "Серияси/Регион",
+    ru: "Регион/Серия",
+    en: "Region/Variant"
+  },
+  capacityAndroidLabel: { // Android uchun sig'im labeli
+    uz_latin: "Sig'imi",
+    uz_cyrillic: "Сиғими",
+    ru: "Емкость",
+    en: "Capacity"
+  },
+  capacityValueLabel: { // iPhone sig'im (raqam) labeli
+    uz_latin: "Sig'imi",
+    uz_cyrillic: "Сиғими",
+    ru: "Емкость",
+    en: "Capacity"
+  },
+  capacityUnitLabel: { // iPhone yomkost (birlik) labeli
+    uz_latin: "Yomkost", // Yoki Birligi
+    uz_cyrillic: "Ёмкость", // Yoki Бирлиги
+    ru: "Ед. изм.", // Единица измерения
+    en: "Unit"
+  },
+  sellingPrice: { // iPhone sotiladigan narxi
+    uz_latin: "Sotiladigan narxi ",
+    uz_cyrillic: "Сотиладиган нархи ",
+    ru: "Цена продажи ",
+    en: "Selling Price "
+  },
+  color: { // iPhone rangi
+    uz_latin: "Rangi",
+    uz_cyrillic: "Ранги",
+    ru: "Цвет",
+    en: "Color"
+  },
+   capacity: { // iPhone Yomkost (Sig'im)
+    uz_latin: "Sig'imi (Yomkost)",
+    uz_cyrillic: "Сиғими (Ёмкость)",
+    ru: "Емкость",
+    en: "Capacity"
+  },
+  region: { // iPhone Seriyasi (Region)
+    uz_latin: "Seriyasi (Region)",
+    uz_cyrillic: "Серияси (Регион)",
+    ru: "Регион (Серия)",
+    en: "Region/Variant"
+  },
+  iPhoneAdded: { // iPhone qo'shilgandagi xabar
+    uz_latin: "iPhone muvaffaqiyatli qo'shildi",
+    uz_cyrillic: "iPhone муваффақиятли қўшилди",
+    ru: "iPhone успешно добавлен",
+    en: "iPhone added successfully"
+  },
+  "e.g.": { // Input placeholderlarida misol uchun
+    uz_latin: "Masalan:",
+    uz_cyrillic: "Масалан:",
+    ru: "Например:",
+    en: "e.g.,"
+  },
+  batteryHealthLabel: { // iPhone batareya sog'lig'i uchun label
+    uz_latin: "Batareya holati (%)",
+    uz_cyrillic: "Батарея ҳолати (%)",
+    ru: "Состояние батареи (%)",
+    en: "Battery Health (%)"
+  },
+  // --- AddProductDialog uchun tarjimalar tugadi ---
+
+  // Qolgan mavjud tarjimalar
   totalAmount: {
     uz_latin: "Umumiy summa",
     uz_cyrillic: "Умумий сумма",
@@ -663,8 +791,19 @@ const translations = {
     uz_cyrillic: "Муддати ўтган",
     ru: "Просрочено",
     en: "Overdue"
-  }
-};
+  },
+  purchaseDateLabel: { // Olingan sana maydoni uchun Label
+    uz_latin: "Olingan sana",
+    uz_cyrillic: "Олинган сана",
+    ru: "Дата покупки",
+    en: "Purchase Date"
+  },
+
+}; // translations obyekti tugadi
+
+// ========================================================================
+//  QUYIDAGI QISM O'ZGARMASDAN, TO'LIQLIGICHA QOLADI
+// ========================================================================
 
 type TranslationKeys = keyof typeof translations;
 
@@ -675,13 +814,26 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // Bu yerda `useApp` ni to'g'ri import qilinganiga ishonch hosil qiling
   const { language } = useApp();
 
   const t = (key: TranslationKeys): string => {
+    // Kalit mavjudligini tekshirish
     if (!translations[key]) {
       console.warn(`Translation key "${key}" not found`);
-      return key;
+      return key; // Agar kalit topilmasa, kalitning o'zini qaytarish
     }
+
+    // Til uchun tarjima mavjudligini tekshirish
+    if (!translations[key][language]) {
+      // Agar joriy til uchun tarjima topilmasa, boshqa tilga (masalan, 'uz_latin') qaytish
+      const fallbackLanguage: Language = 'uz_latin'; // Standart tilni belgilang
+      console.warn(`Translation for key "${key}" in language "${language}" not found. Falling back to '${fallbackLanguage}'.`);
+      // Standart til uchun ham tarjima bo'lmasa, kalitni qaytarish
+      return translations[key][fallbackLanguage] || key;
+    }
+
+    // Joriy til uchun tarjimani qaytarish
     return translations[key][language];
   };
 
