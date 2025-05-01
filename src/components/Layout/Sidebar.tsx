@@ -44,7 +44,7 @@ export function Sidebar({ className }: SidebarProps) {
       <div className="flex items-center justify-between p-4">
         {!collapsed && (
           <h2 className="text-xl font-bold text-sidebar-foreground gradient-heading">
-            Smart POS
+            iPhone 777
           </h2>
         )}
         <Button

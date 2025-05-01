@@ -59,9 +59,9 @@ export default function Login() {
 
       <div className="w-full max-w-md animate-fade-in">
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold gradient-heading mb-2">
+          {/* <h1 className="text-3xl font-bold gradient-heading mb-2">
             777
-          </h1>
+          </h1> */}
           <p className="text-muted-foreground">
             {t("login")}
           </p>
